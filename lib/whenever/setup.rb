@@ -10,12 +10,12 @@ set :path, Whenever.path
 set :job_template, "/bin/bash -l -c ':job'"
 
 set :runner_command, case
+  when Whenever.bundler?
+    "bundle exec rails runner"
   when Whenever.bin_rails?
     "bin/rails runner"
   when Whenever.script_rails?
     "script/rails runner"
-  when Whenever.bundler?
-    "bundle exec rails runner"
   else
     "script/runner"
   end

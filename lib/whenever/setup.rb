@@ -14,6 +14,8 @@ set :runner_command, case
     "bin/rails runner"
   when Whenever.script_rails?
     "script/rails runner"
+  when Whenever.bundler?
+    "bundle exec rails runner"
   else
     "script/runner"
   end
